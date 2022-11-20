@@ -27,15 +27,60 @@
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
+                
                 <label asp-for="Input.ChangeFaculty"></label>
                 <input asp-for="Input.ChangeFaculty" class="form-control" />
                 <span asp-validation-for="Input.ChangeFaculty" class="text-danger"></span>
+                @{
+                    List<SelectListItem> facultyItems = new List<SelectListItem>();
+                    facultyItems.Add(new SelectListItem
+            {
+                Text = "HITS Faculty",
+                Value = "HITS Faculty"
+            });
+                    facultyItems.Add(new SelectListItem
+            {
+                Text = "Biology Faculty",
+                Value = "Biology Faculty",
+                Selected = true
+            });
+                    facultyItems.Add(new SelectListItem
+            {
+                Text = "Psychology Faculty",
+                Value = "Psychology Faculty"
+            });
+                }
+
+                @Html.DropDownList("Choose Faculty", facultyItems, new { @class = "form-control" })
+                
             </div>
 
             <div class="form-group">
-            <label asp-for="Input.ChangeGroup"></label>
+               
+                <label asp-for="Input.ChangeGroup"></label>
                 <input asp-for="Input.ChangeGroup" class="form-control" />
                 <span asp-validation-for="Input.ChangeGroup" class="text-danger"></span>
+                @{
+                    List<SelectListItem> groupItems = new List<SelectListItem>();
+                    groupItems.Add(new SelectListItem
+            {
+                Text = "971905",
+                Value = "971905"
+            });
+                    groupItems.Add(new SelectListItem
+            {
+                Text = "234256",
+                Value = "234256",
+                Selected = true
+            });
+                    groupItems.Add(new SelectListItem
+            {
+                Text = "456732",
+                Value = "456732"
+            });
+                }
+
+                @Html.DropDownList("Choose Group", groupItems, new { @class = "form-control" })
             </div>
             <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
         </form>
