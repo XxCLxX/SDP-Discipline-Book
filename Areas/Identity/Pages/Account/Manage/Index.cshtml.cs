@@ -56,21 +56,54 @@ namespace asp_book.Areas.Identity.Pages.Account.Manage
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
+            //[Phone]
+            //[Display(Name = "Phone number")]
+            //public string PhoneNumber { get; set; }
+
+          
+            
+            
+            [Display(Name = "Username")]
+            public string Username { get; set; }
+
+            [Display(Name = "Birthdate")]
+            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+            public DateTime BirthDate { get; set; }
+
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+           
+            [Display(Name = "Faculty")]
+            public string ChangeFaculty { get; set; }
+
+           
+            [Display(Name = "Group")]
+            public string ChangeGroup { get; set; }
+
+            //[Display(Name = "Profile Picture")]
+            //public byte[] ProfilePicture { get; set; }
         }
 
         private async Task LoadAsync(ApplicationUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
+            var birthDate = user.BirthDate;
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            var faculty = user.ChangeFaculty;
+            var group = user.ChangeGroup;
 
             Username = userName;
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                Username = userName,
+                BirthDate = birthDate,
+                PhoneNumber = phoneNumber,
+                ChangeFaculty = faculty,
+                ChangeGroup = group
+
             };
         }
 
@@ -100,6 +133,16 @@ namespace asp_book.Areas.Identity.Pages.Account.Manage
                 return Page();
             }
 
+            var birthDate = user.BirthDate;
+           
+
+            if (Input.BirthDate != birthDate)
+            {
+                user.BirthDate = Input.BirthDate;
+                await _userManager.UpdateAsync(user);
+            }
+            
+
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
             if (Input.PhoneNumber != phoneNumber)
             {
@@ -109,6 +152,23 @@ namespace asp_book.Areas.Identity.Pages.Account.Manage
                     StatusMessage = "Unexpected error when trying to set phone number.";
                     return RedirectToPage();
                 }
+            }
+
+            var faculty = user.ChangeFaculty;
+            
+
+            if (Input.ChangeFaculty != faculty)
+            {
+                user.ChangeFaculty = Input.ChangeFaculty;
+                await _userManager.UpdateAsync(user);
+            }
+
+            var group = user.ChangeGroup;
+
+            if (Input.ChangeGroup != group)
+            {
+                user.ChangeGroup = Input.ChangeGroup;
+                await _userManager.UpdateAsync(user);
             }
 
             await _signInManager.RefreshSignInAsync(user);
