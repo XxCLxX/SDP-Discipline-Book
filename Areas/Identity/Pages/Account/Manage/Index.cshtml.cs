@@ -68,7 +68,7 @@ namespace asp_book.Areas.Identity.Pages.Account.Manage
 
             [Display(Name = "Birthdate")]
             [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-            public DateTime BirthDate { get; set; }
+            public string BirthDate { get; set; }
 
             [Phone]
             [Display(Name = "Phone number")]
@@ -89,10 +89,10 @@ namespace asp_book.Areas.Identity.Pages.Account.Manage
         private async Task LoadAsync(ApplicationUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
-            var birthDate = user.BirthDate;
+            var birthDate = user.DOB;
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-            var faculty = user.ChangeFaculty;
-            var group = user.ChangeGroup;
+            var faculty = user.Faculty;
+            var group = user.Group;
 
             Username = userName;
 
@@ -133,12 +133,12 @@ namespace asp_book.Areas.Identity.Pages.Account.Manage
                 return Page();
             }
 
-            var birthDate = user.BirthDate;
+            var birthDate = user.DOB;
            
 
             if (Input.BirthDate != birthDate)
             {
-                user.BirthDate = Input.BirthDate;
+                user.DOB = Input.BirthDate;
                 await _userManager.UpdateAsync(user);
             }
             
@@ -154,20 +154,20 @@ namespace asp_book.Areas.Identity.Pages.Account.Manage
                 }
             }
 
-            var faculty = user.ChangeFaculty;
+            var faculty = user.Faculty;
             
 
             if (Input.ChangeFaculty != faculty)
             {
-                user.ChangeFaculty = Input.ChangeFaculty;
+                user.Faculty = Input.ChangeFaculty;
                 await _userManager.UpdateAsync(user);
             }
 
-            var group = user.ChangeGroup;
+            var group = user.Group;
 
             if (Input.ChangeGroup != group)
             {
-                user.ChangeGroup = Input.ChangeGroup;
+                user.Group = Input.ChangeGroup;
                 await _userManager.UpdateAsync(user);
             }
 
