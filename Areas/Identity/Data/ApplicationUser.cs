@@ -15,6 +15,7 @@ public class ApplicationUser : IdentityUser
     public string Phone { get; set; }
     public Faculty Faculty { get; set; }
     //public Group Groups { get; set; }
+    public ICollection<Subject> Subjects { get; set; }
 }
 
 public class ApplicationRole : IdentityRole

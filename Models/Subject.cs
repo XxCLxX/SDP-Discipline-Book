@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis.Operations;
+﻿using asp_book.Areas.Identity.Data;
+using Microsoft.CodeAnalysis.Operations;
 
 namespace asp_book.Models
 {
@@ -10,6 +11,7 @@ namespace asp_book.Models
         public string Literature { get; set; }
         public int Year { get; set; }
         public string Semester { get; set; } //enum
-        public ICollection<Group> Groups { get; set; }  
+        public ICollection<Group> Groups { get; set; } 
+        public ICollection<ApplicationUser> Users { get; set; }
     }
 }
