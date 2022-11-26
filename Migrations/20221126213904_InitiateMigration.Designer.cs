@@ -12,8 +12,8 @@ using asp_book.Areas.Identity.Data;
 namespace asp_book.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221126201655_SubjectGroup")]
-    partial class SubjectGroup
+    [Migration("20221126213904_InitiateMigration")]
+    partial class InitiateMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,6 +46,9 @@ namespace asp_book.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<int>("FacultyId")
+                        .HasColumnType("int");
 
                     b.Property<string>("FullName")
                         .IsRequired()
@@ -91,6 +94,8 @@ namespace asp_book.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("FacultyId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -326,6 +331,17 @@ namespace asp_book.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("asp_book.Areas.Identity.Data.ApplicationUser", b =>
+                {
+                    b.HasOne("asp_book.Models.Faculty", "Faculty")
+                        .WithMany("Users")
+                        .HasForeignKey("FacultyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Faculty");
+                });
+
             modelBuilder.Entity("asp_book.Models.Group", b =>
                 {
                     b.HasOne("asp_book.Models.Faculty", "Faculty")
@@ -406,6 +422,8 @@ namespace asp_book.Migrations
             modelBuilder.Entity("asp_book.Models.Faculty", b =>
                 {
                     b.Navigation("Groups");
+
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

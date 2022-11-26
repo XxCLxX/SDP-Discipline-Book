@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using System.Reflection.Emit;
+using Microsoft.Build.Framework;
 
 namespace asp_book.Areas.Identity.Data;
 
@@ -29,6 +30,10 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
         builder.Entity<Faculty>()
         .HasMany(f => f.Groups)
         .WithOne(g => g.Faculty);
+
+        builder.Entity<Subject>()
+        .HasMany(t => t.Groups)
+        .WithMany(t => t.Subjects);
 
         builder.ApplyConfiguration(new ApplicationUserEntityConfiguration());
     }
