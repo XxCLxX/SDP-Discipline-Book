@@ -8,6 +8,6 @@ namespace asp_book.Models
         public string GroupName { get; set; }
         public Faculty Faculty { get; set; }
         public ICollection<Subject> Subjects { get; set; }
-        //public ICollection<ApplicationUser> Users { get; set; }
+        public ICollection<ApplicationUser> Users { get; set; }
     }
 }
