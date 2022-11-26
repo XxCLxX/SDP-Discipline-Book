@@ -13,6 +13,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
 {
     public DbSet<Faculty> Faculties { get; set; }
     public DbSet<Group> Groups { get; set; }
+    public DbSet<Subject> Subjects { get; set; }
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
@@ -28,6 +29,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
         builder.Entity<Faculty>()
         .HasMany(f => f.Groups)
         .WithOne(g => g.Faculty);
+
         builder.ApplyConfiguration(new ApplicationUserEntityConfiguration());
     }
 
