@@ -13,7 +13,7 @@ public class ApplicationUser : IdentityUser
     public string FullName { get; set; }
     public string DOB { get; set; }
     public string Phone { get; set; }
-    public ICollection<Group> Groups { get; set; }
+    //public Group Groups { get; set; }
     //public Faculty Faculty { get; set; }
 }
 

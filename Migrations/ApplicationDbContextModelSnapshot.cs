@@ -22,21 +22,6 @@ namespace asp_book.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("ApplicationUserGroup", b =>
-                {
-                    b.Property<int>("GroupsGroupId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UsersId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("GroupsGroupId", "UsersId");
-
-                    b.HasIndex("UsersId");
-
-                    b.ToTable("ApplicationUserGroup");
-                });
-
             modelBuilder.Entity("asp_book.Areas.Identity.Data.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -130,7 +115,7 @@ namespace asp_book.Migrations
 
                     b.HasKey("FacultyId");
 
-                    b.ToTable("Faculties");
+                    b.ToTable("Faculties", (string)null);
                 });
 
             modelBuilder.Entity("asp_book.Models.Group", b =>
@@ -152,7 +137,7 @@ namespace asp_book.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("Groups");
+                    b.ToTable("Groups", (string)null);
                 });
 
             modelBuilder.Entity("asp_book.Models.Subject", b =>
@@ -184,7 +169,7 @@ namespace asp_book.Migrations
 
                     b.HasKey("SubjectId");
 
-                    b.ToTable("Subjects");
+                    b.ToTable("Subjects", (string)null);
                 });
 
             modelBuilder.Entity("GroupSubject", b =>
@@ -199,7 +184,7 @@ namespace asp_book.Migrations
 
                     b.HasIndex("SubjectsSubjectId");
 
-                    b.ToTable("GroupSubject");
+                    b.ToTable("GroupSubject", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -337,21 +322,6 @@ namespace asp_book.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("ApplicationUserGroup", b =>
-                {
-                    b.HasOne("asp_book.Models.Group", null)
-                        .WithMany()
-                        .HasForeignKey("GroupsGroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("asp_book.Areas.Identity.Data.ApplicationUser", null)
-                        .WithMany()
-                        .HasForeignKey("UsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("asp_book.Models.Group", b =>
