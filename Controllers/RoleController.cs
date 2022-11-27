@@ -24,5 +24,11 @@ namespace asp_book.Controllers
         {
             return View();
         }
+
+        [Authorize(Policy = Constants.Policies.RequireStudent)]
+        public IActionResult Student()
+        {
+            return View();
+        }
     }
 }

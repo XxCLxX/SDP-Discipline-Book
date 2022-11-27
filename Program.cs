@@ -65,6 +65,7 @@ void AddAuthorizationPolicies()
     {
         options.AddPolicy(Constants.Policies.RequireAdmin, policy => policy.RequireRole(Constants.Roles.Administrator));
         options.AddPolicy(Constants.Policies.RequireTeacher, policy => policy.RequireRole(Constants.Roles.Teacher));
+        options.AddPolicy(Constants.Policies.RequireStudent, policy => policy.RequireRole(Constants.Roles.Student));
     });
 }
 
