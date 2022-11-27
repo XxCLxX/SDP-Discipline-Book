@@ -18,8 +18,8 @@ namespace asp_book.Controllers
             return View();
         }
 
-        //[Authorize(Policy = "RequireAdmin")]
-        [Authorize(Roles = $"{Constants.Roles.Administrator},{Constants.Roles.Teacher}")]
+        [Authorize(Policy = Constants.Policies.RequireAdmin)]
+        //[Authorize(Roles = $"{Constants.Roles.Administrator},{Constants.Roles.Teacher}")]
         public IActionResult Admin()
         {
             return View();
