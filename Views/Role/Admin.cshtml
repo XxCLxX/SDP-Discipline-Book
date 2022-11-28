@@ -6,33 +6,12 @@
 }
 <div class="text-center">
     <h1 class="display-4">Admin Page</h1>
-
-    <h3>Faculties</h3>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-            </tr>
-        </tbody>
-    </table>
+    <br />
+    <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 w-220px">
+        <li><a class="dropdown-item rounded-2" asp-area="" asp-controller="Faculties" asp-action="Index"> Manage Faculties</a></li>
+        <li><a class="dropdown-item rounded-2" href="#">Manage Groups</a></li>
+        <li><a class="dropdown-item rounded-2" href="#">Manage Disciplines</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item rounded-2" asp-area="" asp-controller="User" asp-action="Index">Manage Users</a></li>
+    </ul>
 </div>

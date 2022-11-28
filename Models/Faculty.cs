@@ -6,7 +6,7 @@ namespace asp_book.Models
     {
         public int FacultyId { get; set; }
         public string? FacultyName { get; set; }
-        public ICollection<Group> Groups { get; set; }
-        public ICollection<ApplicationUser> Users { get; set; }
+        public ICollection<Group>? Groups { get; set; }
+        public ICollection<ApplicationUser>? Users { get; set; }
     }
 }
