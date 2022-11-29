@@ -4,6 +4,13 @@
 @{
     ViewData["Title"] = "Teacher Page";
 }
-<div class="text-center">
-    <h1 class="display-4">Teacher Page</h1>
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">My Disciplines</button>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">Tab1</div>
+   
 </div>

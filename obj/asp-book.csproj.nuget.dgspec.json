@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Chikondi Luka\\Downloads\\New folder\\SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f\\asp-book.csproj": {}
+    "C:\\Users\\msi-pc\\source\\repos\\SDP\\asp-book.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Chikondi Luka\\Downloads\\New folder\\SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f\\asp-book.csproj": {
+    "C:\\Users\\msi-pc\\source\\repos\\SDP\\asp-book.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chikondi Luka\\Downloads\\New folder\\SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f\\asp-book.csproj",
+        "projectUniqueName": "C:\\Users\\msi-pc\\source\\repos\\SDP\\asp-book.csproj",
         "projectName": "asp-book",
-        "projectPath": "C:\\Users\\Chikondi Luka\\Downloads\\New folder\\SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f\\asp-book.csproj",
-        "packagesPath": "C:\\Users\\Chikondi Luka\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chikondi Luka\\Downloads\\New folder\\SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f\\obj\\",
+        "projectPath": "C:\\Users\\msi-pc\\source\\repos\\SDP\\asp-book.csproj",
+        "packagesPath": "C:\\Users\\msi-pc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\msi-pc\\source\\repos\\SDP\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Chikondi Luka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\msi-pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

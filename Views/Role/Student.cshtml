@@ -4,6 +4,97 @@
 @{
     ViewData["Title"] = "Student Page";
 }
-<div class="text-center">
-    <h1 class="display-4">Student Page</h1>
+
+@model ICollection<asp_book.Models.Subject>
+
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Autumn Semester</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Spring Semester</button>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="text-center">
+            <h1 class="display-4">Autumn Subjects</h1>
+            @if (@Model != null && @Model.Any())
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Subject Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Literature</th>
+                            <th scope="col">Year</th>
+                            <th scope="col">Semester</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var subject in Model)
+                        {
+                            <tr>
+                                <th scope="row">@subject.SubjectId</th>
+                                <td>@subject.SubjectName</td>
+                                <td>@subject.Description</td>
+                                <td>@subject.Literature</td>
+                                <td>@subject.Year</td>
+                                <td>@subject.Semester</td>
+                                <td>
+                                    <a asp-controller="User" asp-action="Edit" asp-route-id="@subject.SubjectId">Edit</a>
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+
+        <div class="text-center">
+        </div>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="text-center">
+            <h1 class="display-4">Spring Subjects</h1>
+            @if (@Model != null && @Model.Any())
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Subject Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Literature</th>
+                            <th scope="col">Year</th>
+                            <th scope="col">Semester</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var subject in Model)
+                        {
+                            <tr>
+                                <th scope="row">@subject.SubjectId</th>
+                                <td>@subject.SubjectName</td>
+                                <td>@subject.Description</td>
+                                <td>@subject.Literature</td>
+                                <td>@subject.Year</td>
+                                <td>@subject.Semester</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+
+        <div class="text-center">
+        </div>
+    </div>
 </div>
+
+

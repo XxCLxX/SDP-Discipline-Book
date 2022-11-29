@@ -12,8 +12,8 @@ using asp_book.Areas.Identity.Data;
 namespace asp_book.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221127103054_SeedRoles")]
-    partial class SeedRoles
+    [Migration("20221128131753_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
