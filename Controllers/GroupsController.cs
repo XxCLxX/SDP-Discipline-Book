@@ -7,88 +7,99 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using asp_book.Areas.Identity.Data;
 using asp_book.Models;
+using System.Collections;
 
 namespace asp_book.Controllers
 {
-    public class FacultiesController : Controller
+    public class GroupsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public FacultiesController(ApplicationDbContext context)
+        public GroupsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Faculties
+        // GET: Groups
         public async Task<IActionResult> Index()
-        { 
-              return View(await _context.Faculties.ToListAsync());
+        {
+            var courses = _context.Groups
+                        .Include(g => g.Faculty)
+                        .AsNoTracking();
+
+            return View(await courses.ToListAsync());
+            //return View(await _context.Groups.ToListAsync());
         }
 
-        // GET: Faculties/Details/5
+        // GET: Groups/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Faculties == null)
+            if (id == null || _context.Groups == null)
             {
                 return NotFound();
             }
 
-            var faculty = await _context.Faculties
-                .FirstOrDefaultAsync(m => m.FacultyId == id);
-            if (faculty == null)
+            var @group = await _context.Groups
+                .Include(g => g.Faculty)
+                .FirstOrDefaultAsync(m => m.GroupId == id);
+
+            if (@group == null)
             {
                 return NotFound();
             }
 
-            return View(faculty);
+            return View(@group);
         }
 
-        // GET: Faculties/Create
+        // GET: Groups/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Faculties/Create
+        // POST: Groups/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FacultyId,FacultyName")] Faculty faculty)
+        public async Task<IActionResult> Create([Bind("GroupId,GroupName")] Group @group)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(faculty);
+                _context.Add(@group);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(faculty);
+            return View(@group);
         }
 
-        // GET: Faculties/Edit/5
+        // GET: Groups/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Faculties == null)
+
+            if (id == null || _context.Groups == null)
             {
                 return NotFound();
             }
 
-            var faculty = await _context.Faculties.FindAsync(id);
-            if (faculty == null)
+            var @group = await _context.Groups.FindAsync(id);
+            if (@group == null)
             {
                 return NotFound();
             }
-            return View(faculty);
+            return View(@group);
         }
 
-        // POST: Faculties/Edit/5
+        // POST: Groups/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FacultyId,FacultyName")] Faculty faculty)
+        public async Task<IActionResult> Edit(int id, [Bind("GroupId,GroupName")] Group @group)
         {
-            if (id != faculty.FacultyId)
+            ViewBag.Faculty = new SelectList(_context.Faculties, "FacultyId", "FacultyName");
+
+            if (id != @group.GroupId)
             {
                 return NotFound();
             }
@@ -97,12 +108,12 @@ namespace asp_book.Controllers
             {
                 try
                 {
-                    _context.Update(faculty);
+                    _context.Update(@group);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FacultyExists(faculty.FacultyId))
+                    if (!GroupExists(@group.GroupId))
                     {
                         return NotFound();
                     }
@@ -113,49 +124,49 @@ namespace asp_book.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(faculty);
+            return View(@group);
         }
 
-        // GET: Faculties/Delete/5
+        // GET: Groups/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Faculties == null)
+            if (id == null || _context.Groups == null)
             {
                 return NotFound();
             }
 
-            var faculty = await _context.Faculties
-                .FirstOrDefaultAsync(m => m.FacultyId == id);
-            if (faculty == null)
+            var @group = await _context.Groups
+                .FirstOrDefaultAsync(m => m.GroupId == id);
+            if (@group == null)
             {
                 return NotFound();
             }
 
-            return View(faculty);
+            return View(@group);
         }
 
-        // POST: Faculties/Delete/5
+        // POST: Groups/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Faculties == null)
+            if (_context.Groups == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Faculties'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Groups'  is null.");
             }
-            var faculty = await _context.Faculties.FindAsync(id);
-            if (faculty != null)
+            var @group = await _context.Groups.FindAsync(id);
+            if (@group != null)
             {
-                _context.Faculties.Remove(faculty);
+                _context.Groups.Remove(@group);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool FacultyExists(int id)
+        private bool GroupExists(int id)
         {
-          return _context.Faculties.Any(e => e.FacultyId == id);
+            return _context.Groups.Any(e => e.GroupId == id);
         }
     }
 }
