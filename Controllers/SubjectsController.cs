@@ -7,104 +7,93 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using asp_book.Areas.Identity.Data;
 using asp_book.Models;
-using System.Collections;
 
 namespace asp_book.Controllers
 {
-    public class GroupsController : Controller
+    public class SubjectsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public GroupsController(ApplicationDbContext context)
+        public SubjectsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Groups
+        // GET: Subjects
         public async Task<IActionResult> Index()
         {
-            var courses = _context.Groups
-                        .Include(g => g.Faculty)
+            var discipline = _context.Subjects
+                        .Include(s => s.Groups)
                         .AsNoTracking();
 
-            return View(await courses.ToListAsync());
-            //return View(await _context.Groups.ToListAsync());
+            return View(await discipline.ToListAsync());
+            //return View(await _context.Subjects.ToListAsync());
         }
 
-        // GET: Groups/Details/5
+        // GET: Subjects/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Groups == null)
+            if (id == null || _context.Subjects == null)
             {
                 return NotFound();
             }
 
-            var @group = await _context.Groups
-                .Include(g => g.Faculty)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.GroupId == id);
-
-            if (@group == null)
+            var subject = await _context.Subjects
+                .FirstOrDefaultAsync(m => m.SubjectId == id);
+            if (subject == null)
             {
                 return NotFound();
             }
 
-            return View(@group);
+            return View(subject);
         }
 
-        // GET: Groups/Create
+        // GET: Subjects/Create
         public IActionResult Create()
         {
-            FacultiesDropDownList();
             return View();
         }
 
-        // POST: Groups/Create
+        // POST: Subjects/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("GroupId,GroupName,FacultyId")] Group @group)
+        public async Task<IActionResult> Create([Bind("SubjectId,SubjectName,Description,Literature,Year,Semester")] Subject subject)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(@group);
+                _context.Add(subject);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            FacultiesDropDownList(@group.Faculty);
-            return View(@group);
+            return View(subject);
         }
 
-        // GET: Groups/Edit/5
+        // GET: Subjects/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-
-            if (id == null || _context.Groups == null)
+            if (id == null || _context.Subjects == null)
             {
                 return NotFound();
             }
 
-            var @group = await _context.Groups.FindAsync(id);
-            if (@group == null)
+            var subject = await _context.Subjects.FindAsync(id);
+            if (subject == null)
             {
                 return NotFound();
             }
-
-            FacultiesDropDownList(group.Faculty.FacultyId);
-            return View(@group);
+            return View(subject);
         }
 
-        // POST: Groups/Edit/5
+        // POST: Subjects/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("GroupId,GroupName")] Group @group)
+        public async Task<IActionResult> Edit(int id, [Bind("SubjectId,SubjectName,Description,Literature,Year,Semester")] Subject subject)
         {
-            ViewBag.Faculty = new SelectList(_context.Faculties, "FacultyId", "FacultyName");
-
-            if (id != @group.GroupId)
+            if (id != subject.SubjectId)
             {
                 return NotFound();
             }
@@ -113,12 +102,12 @@ namespace asp_book.Controllers
             {
                 try
                 {
-                    _context.Update(@group);
+                    _context.Update(subject);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GroupExists(@group.GroupId))
+                    if (!SubjectExists(subject.SubjectId))
                     {
                         return NotFound();
                     }
@@ -129,62 +118,58 @@ namespace asp_book.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-
-            FacultiesDropDownList(group.Faculty);
-            return View(@group);
+            return View(subject);
         }
 
-        private void FacultiesDropDownList(object selectedFaculty = null)
+        //Groups
+        private void GroupsDropDownList(object selectedGroup = null)
         {
-            var facultiesQuery = from f in _context.Faculties
-                                   orderby f.FacultyName
-                                   select f;
-            ViewBag.FacultyId = new SelectList(facultiesQuery.AsNoTracking(), "FacultyId", "FacultyName", selectedFaculty);
+            var groupsQuery = from g in _context.Groups
+                                 orderby g.GroupName
+                                 select g;
+            ViewBag.GroupId = new SelectList(groupsQuery.AsNoTracking(), "GroupId", "GroupName", selectedGroup);
         }
 
-
-        // GET: Groups/Delete/5
+        // GET: Subjects/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Groups == null)
+            if (id == null || _context.Subjects == null)
             {
                 return NotFound();
             }
 
-            var @group = await _context.Groups
-                .Include(g => g.Faculty)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.GroupId == id);
-            if (@group == null)
+            var subject = await _context.Subjects
+                .FirstOrDefaultAsync(m => m.SubjectId == id);
+            if (subject == null)
             {
                 return NotFound();
             }
 
-            return View(@group);
+            return View(subject);
         }
 
-        // POST: Groups/Delete/5
+        // POST: Subjects/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Groups == null)
+            if (_context.Subjects == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Groups'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Subjects'  is null.");
             }
-            var @group = await _context.Groups.FindAsync(id);
-            if (@group != null)
+            var subject = await _context.Subjects.FindAsync(id);
+            if (subject != null)
             {
-                _context.Groups.Remove(@group);
+                _context.Subjects.Remove(subject);
             }
-
+            
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool GroupExists(int id)
+        private bool SubjectExists(int id)
         {
-            return _context.Groups.Any(e => e.GroupId == id);
+          return _context.Subjects.Any(e => e.SubjectId == id);
         }
     }
 }
