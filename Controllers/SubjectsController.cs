@@ -22,12 +22,7 @@ namespace asp_book.Controllers
         // GET: Subjects
         public async Task<IActionResult> Index()
         {
-            var discipline = _context.Subjects
-                        .Include(s => s.Groups)
-                        .AsNoTracking();
-
-            return View(await discipline.ToListAsync());
-            //return View(await _context.Subjects.ToListAsync());
+              return View(await _context.Subjects.ToListAsync());
         }
 
         // GET: Subjects/Details/5
@@ -119,15 +114,6 @@ namespace asp_book.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(subject);
-        }
-
-        //Groups
-        private void GroupsDropDownList(object selectedGroup = null)
-        {
-            var groupsQuery = from g in _context.Groups
-                                 orderby g.GroupName
-                                 select g;
-            ViewBag.GroupId = new SelectList(groupsQuery.AsNoTracking(), "GroupId", "GroupName", selectedGroup);
         }
 
         // GET: Subjects/Delete/5

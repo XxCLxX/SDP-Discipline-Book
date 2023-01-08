@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace asp_book.Migrations
 {
-    public partial class InitiateMigration : Migration
+    public partial class initalMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,7 +29,7 @@ namespace asp_book.Migrations
                 {
                     FacultyId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FacultyName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    FacultyName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -75,6 +75,26 @@ namespace asp_book.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Groups",
+                columns: table => new
+                {
+                    GroupId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    GroupName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FacultyId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Groups", x => x.GroupId);
+                    table.ForeignKey(
+                        name: "FK_Groups_Faculties_FacultyId",
+                        column: x => x.FacultyId,
+                        principalTable: "Faculties",
+                        principalColumn: "FacultyId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetUsers",
                 columns: table => new
                 {
@@ -82,7 +102,8 @@ namespace asp_book.Migrations
                     FullName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     DOB = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
-                    FacultyId = table.Column<int>(type: "int", nullable: false),
+                    FacultyId = table.Column<int>(type: "int", nullable: true),
+                    GroupsGroupId = table.Column<int>(type: "int", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -105,27 +126,59 @@ namespace asp_book.Migrations
                         name: "FK_AspNetUsers_Faculties_FacultyId",
                         column: x => x.FacultyId,
                         principalTable: "Faculties",
-                        principalColumn: "FacultyId",
+                        principalColumn: "FacultyId");
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_Groups_GroupsGroupId",
+                        column: x => x.GroupsGroupId,
+                        principalTable: "Groups",
+                        principalColumn: "GroupId");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "GroupSubjects",
+                columns: table => new
+                {
+                    GroupId = table.Column<int>(type: "int", nullable: false),
+                    SubjectId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GroupSubjects", x => new { x.SubjectId, x.GroupId });
+                    table.ForeignKey(
+                        name: "FK_GroupSubjects_Groups_GroupId",
+                        column: x => x.GroupId,
+                        principalTable: "Groups",
+                        principalColumn: "GroupId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_GroupSubjects_Subjects_SubjectId",
+                        column: x => x.SubjectId,
+                        principalTable: "Subjects",
+                        principalColumn: "SubjectId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Groups",
+                name: "ApplicationUserSubject",
                 columns: table => new
                 {
-                    GroupId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    GroupName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FacultyId = table.Column<int>(type: "int", nullable: false)
+                    SubjectsSubjectId = table.Column<int>(type: "int", nullable: false),
+                    UsersId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Groups", x => x.GroupId);
+                    table.PrimaryKey("PK_ApplicationUserSubject", x => new { x.SubjectsSubjectId, x.UsersId });
                     table.ForeignKey(
-                        name: "FK_Groups_Faculties_FacultyId",
-                        column: x => x.FacultyId,
-                        principalTable: "Faculties",
-                        principalColumn: "FacultyId",
+                        name: "FK_ApplicationUserSubject_AspNetUsers_UsersId",
+                        column: x => x.UsersId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ApplicationUserSubject_Subjects_SubjectsSubjectId",
+                        column: x => x.SubjectsSubjectId,
+                        principalTable: "Subjects",
+                        principalColumn: "SubjectId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -214,29 +267,10 @@ namespace asp_book.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "GroupSubject",
-                columns: table => new
-                {
-                    GroupsGroupId = table.Column<int>(type: "int", nullable: false),
-                    SubjectsSubjectId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_GroupSubject", x => new { x.GroupsGroupId, x.SubjectsSubjectId });
-                    table.ForeignKey(
-                        name: "FK_GroupSubject_Groups_GroupsGroupId",
-                        column: x => x.GroupsGroupId,
-                        principalTable: "Groups",
-                        principalColumn: "GroupId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_GroupSubject_Subjects_SubjectsSubjectId",
-                        column: x => x.SubjectsSubjectId,
-                        principalTable: "Subjects",
-                        principalColumn: "SubjectId",
-                        onDelete: ReferentialAction.Cascade);
-                });
+            migrationBuilder.CreateIndex(
+                name: "IX_ApplicationUserSubject_UsersId",
+                table: "ApplicationUserSubject",
+                column: "UsersId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -276,6 +310,11 @@ namespace asp_book.Migrations
                 column: "FacultyId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_GroupsGroupId",
+                table: "AspNetUsers",
+                column: "GroupsGroupId");
+
+            migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
@@ -288,13 +327,16 @@ namespace asp_book.Migrations
                 column: "FacultyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_GroupSubject_SubjectsSubjectId",
-                table: "GroupSubject",
-                column: "SubjectsSubjectId");
+                name: "IX_GroupSubjects_GroupId",
+                table: "GroupSubjects",
+                column: "GroupId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ApplicationUserSubject");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -311,7 +353,7 @@ namespace asp_book.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "GroupSubject");
+                name: "GroupSubjects");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -320,10 +362,10 @@ namespace asp_book.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Groups");
+                name: "Subjects");
 
             migrationBuilder.DropTable(
-                name: "Subjects");
+                name: "Groups");
 
             migrationBuilder.DropTable(
                 name: "Faculties");

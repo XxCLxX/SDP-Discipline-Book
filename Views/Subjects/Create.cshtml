@@ -3,10 +3,10 @@
 @{
     ViewData["Title"] = "Create";
 }
-
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 <h1>Create</h1>
 
-<h4>Discipline</h4>
+<h4>Subject</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -17,26 +17,31 @@
                 <input asp-for="SubjectName" class="form-control" />
                 <span asp-validation-for="SubjectName" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
+                <textarea asp-for="Description" class="form-control"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Literature" class="control-label"></label>
-                <input asp-for="Literature" class="form-control" />
+                <textarea asp-for="Literature" class="form-control"></textarea>
                 <span asp-validation-for="Literature" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Year" class="control-label"></label>
                 <input asp-for="Year" class="form-control" />
                 <span asp-validation-for="Year" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Semester" class="control-label"></label>
                 <input asp-for="Semester" class="form-control" />
                 <span asp-validation-for="Semester" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -49,5 +54,27 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#Description').summernote({
+                height: 250,
+                minHeight: null,             
+                maxHeight: null,             
+                focus: true
+            });
+        });
+
+        $(document).ready(function () {
+            $('#Literature').summernote({
+                height: 250,
+                minHeight: null,            
+                maxHeight: null,             
+                focus: true
+            });
+        });
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

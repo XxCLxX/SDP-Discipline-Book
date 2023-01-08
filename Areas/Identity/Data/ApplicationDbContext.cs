@@ -15,6 +15,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
     public DbSet<Faculty> Faculties { get; set; }
     public DbSet<Group> Groups { get; set; }
     public DbSet<Subject> Subjects { get; set; }
+    public DbSet<GroupSubject> GroupSubjects { get; set; }
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
@@ -31,9 +32,11 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
         .HasMany(f => f.Groups)
         .WithOne(g => g.Faculty);
 
-        builder.Entity<Subject>()
-        .HasMany(t => t.Groups)
-        .WithMany(t => t.Subjects);
+        builder.Entity<GroupSubject>().HasKey(gs => new
+        {
+            gs.SubjectId,
+            gs.GroupId
+        });
 
         builder.ApplyConfiguration(new ApplicationUserEntityConfiguration());
     }

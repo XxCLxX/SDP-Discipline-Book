@@ -17,7 +17,7 @@ namespace asp_book.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.10")
+                .HasAnnotation("ProductVersion", "6.0.12")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -164,6 +164,23 @@ namespace asp_book.Migrations
                     b.ToTable("Groups");
                 });
 
+            modelBuilder.Entity("asp_book.Models.GroupSubject", b =>
+                {
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(2);
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
+                    b.HasKey("SubjectId", "GroupId");
+
+                    b.HasIndex("GroupId");
+
+                    b.ToTable("GroupSubjects");
+                });
+
             modelBuilder.Entity("asp_book.Models.Subject", b =>
                 {
                     b.Property<int>("SubjectId")
@@ -194,21 +211,6 @@ namespace asp_book.Migrations
                     b.HasKey("SubjectId");
 
                     b.ToTable("Subjects");
-                });
-
-            modelBuilder.Entity("GroupSubject", b =>
-                {
-                    b.Property<int>("GroupsGroupId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SubjectsSubjectId")
-                        .HasColumnType("int");
-
-                    b.HasKey("GroupsGroupId", "SubjectsSubjectId");
-
-                    b.HasIndex("SubjectsSubjectId");
-
-                    b.ToTable("GroupSubject");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -389,19 +391,23 @@ namespace asp_book.Migrations
                     b.Navigation("Faculty");
                 });
 
-            modelBuilder.Entity("GroupSubject", b =>
+            modelBuilder.Entity("asp_book.Models.GroupSubject", b =>
                 {
-                    b.HasOne("asp_book.Models.Group", null)
-                        .WithMany()
-                        .HasForeignKey("GroupsGroupId")
+                    b.HasOne("asp_book.Models.Group", "Group")
+                        .WithMany("GroupSubjects")
+                        .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("asp_book.Models.Subject", null)
-                        .WithMany()
-                        .HasForeignKey("SubjectsSubjectId")
+                    b.HasOne("asp_book.Models.Subject", "Subject")
+                        .WithMany("GroupSubjects")
+                        .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Group");
+
+                    b.Navigation("Subject");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -464,7 +470,14 @@ namespace asp_book.Migrations
 
             modelBuilder.Entity("asp_book.Models.Group", b =>
                 {
+                    b.Navigation("GroupSubjects");
+
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("asp_book.Models.Subject", b =>
+                {
+                    b.Navigation("GroupSubjects");
                 });
 #pragma warning restore 612, 618
         }
