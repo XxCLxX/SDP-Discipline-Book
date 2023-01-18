@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace asp_book.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class ClassScheduleEdit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -21,6 +21,23 @@ namespace asp_book.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetRoles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Classes",
+                columns: table => new
+                {
+                    ClassId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DayofClass = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TimeofClass = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TypeofClass = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BuildingofClass = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RoomofClass = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Classes", x => x.ClassId);
                 });
 
             migrationBuilder.CreateTable(
@@ -351,6 +368,9 @@ namespace asp_book.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Classes");
 
             migrationBuilder.DropTable(
                 name: "GroupSubject");

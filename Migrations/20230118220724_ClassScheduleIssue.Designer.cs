@@ -12,14 +12,14 @@ using asp_book.Areas.Identity.Data;
 namespace asp_book.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221128131753_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230118220724_ClassScheduleIssue")]
+    partial class ClassScheduleIssue
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.10")
+                .HasAnnotation("ProductVersion", "6.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -126,6 +126,34 @@ namespace asp_book.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("asp_book.Models.Class", b =>
+                {
+                    b.Property<int>("ClassId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClassId"), 1L, 1);
+
+                    b.Property<string>("BuildingofClass")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DayofClass")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoomofClass")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TimeofClass")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TypeofClass")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ClassId");
+
+                    b.ToTable("Classes");
                 });
 
             modelBuilder.Entity("asp_book.Models.Faculty", b =>

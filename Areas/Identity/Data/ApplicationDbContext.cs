@@ -16,6 +16,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
     public DbSet<Group> Groups { get; set; }
     public DbSet<Subject> Subjects { get; set; }
 
+    public DbSet<Class> Classes { get; set; }
+
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
     {
