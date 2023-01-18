@@ -10,6 +10,7 @@ namespace asp_book.Areas.Identity.Data;
 // Add profile data for application users by adding properties to the ApplicationUser class
 public class ApplicationUser : IdentityUser
 {
+    //public int ApplicationUserId { get; set; }
     public string FullName { get; set; }
     public string DOB { get; set; }
     public string Phone { get; set; }

@@ -271,3 +271,5 @@ C:\Users\Chikondi Luka\Downloads\New folder\SDP-Discipline-Book-4b238c473e3fac93
 C:\Users\Chikondi Luka\Downloads\New folder\SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f\obj\Debug\net6.0\asp-book.pdb
 C:\Users\Chikondi Luka\Downloads\New folder\SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f\obj\Debug\net6.0\asp-book.genruntimeconfig.cache
 C:\Users\Chikondi Luka\Downloads\New folder\SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f\obj\Debug\net6.0\ref\asp-book.dll
+C:\Users\Chikondi Luka\Downloads\New folder\SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f\bin\Debug\net6.0\Syncfusion.EJ2.dll
+C:\Users\Chikondi Luka\Downloads\New folder\SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f\bin\Debug\net6.0\Syncfusion.Licensing.dll
