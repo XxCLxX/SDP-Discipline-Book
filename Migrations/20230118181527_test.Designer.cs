@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using asp_book.Areas.Identity.Data;
 
@@ -11,9 +12,10 @@ using asp_book.Areas.Identity.Data;
 namespace asp_book.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230118181527_test")]
+    partial class test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,7 +36,7 @@ namespace asp_book.Migrations
 
                     b.HasIndex("UsersId");
 
-                    b.ToTable("ApplicationUserSubject", (string)null);
+                    b.ToTable("ApplicationUserSubject");
                 });
 
             modelBuilder.Entity("asp_book.Areas.Identity.Data.ApplicationUser", b =>
@@ -139,7 +141,7 @@ namespace asp_book.Migrations
 
                     b.HasKey("FacultyId");
 
-                    b.ToTable("Faculties", (string)null);
+                    b.ToTable("Faculties");
                 });
 
             modelBuilder.Entity("asp_book.Models.Group", b =>
@@ -161,7 +163,7 @@ namespace asp_book.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("Groups", (string)null);
+                    b.ToTable("Groups");
                 });
 
             modelBuilder.Entity("asp_book.Models.GroupSubject", b =>
@@ -178,7 +180,7 @@ namespace asp_book.Migrations
 
                     b.HasIndex("GroupId");
 
-                    b.ToTable("GroupSubjects", (string)null);
+                    b.ToTable("GroupSubjects");
                 });
 
             modelBuilder.Entity("asp_book.Models.Subject", b =>
@@ -206,7 +208,7 @@ namespace asp_book.Migrations
 
                     b.HasKey("SubjectId");
 
-                    b.ToTable("Subjects", (string)null);
+                    b.ToTable("Subjects");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
