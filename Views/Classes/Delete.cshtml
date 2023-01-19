@@ -1,0 +1,52 @@
+﻿@model asp_book.Models.Class
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Class</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DayofClass)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DayofClass)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TimeofClass)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TimeofClass)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TypeofClass)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TypeofClass)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BuildingofClass)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BuildingofClass)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RoomofClass)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RoomofClass)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ClassId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

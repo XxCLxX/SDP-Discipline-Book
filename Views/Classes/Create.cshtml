@@ -1,0 +1,116 @@
+﻿@model asp_book.Models.Class
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Class</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DayofClass" class="control-label"></label>
+                <input asp-for="DayofClass" class="form-control" />
+                <span asp-validation-for="DayofClass" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TimeofClass" class="control-label"></label>
+                <input asp-for="TimeofClass" class="form-control" />
+                <span asp-validation-for="TimeofClass" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeofClass" class="control-label"></label>
+                <input asp-for="TypeofClass" class="form-control" id="destination" />
+                <span asp-validation-for="TypeofClass" class="text-danger"></span>
+            </div>
+            <div>
+                <select onchange="copyTextValue();showHideBuildingLabel();showHideRoomLabel();showHideBuildingTextBox();showHideRoomTextBox()" id="select">
+                    <option value="">Select</option>
+                    <option value="Online">Online</option>
+                    <option value="Offline">Offline</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuildingofClass" class="control-label" id="buildlabel" style="display:none;"></label>
+                <input asp-for="BuildingofClass" class="form-control" id="buildname" style="display:none;" />
+                <span asp-validation-for="BuildingofClass" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoomofClass" class="control-label" id="roomlabel" style="display:none;"></label>
+                <input asp-for="RoomofClass" class="form-control" id="roomname" style="display:none;" />
+                <span asp-validation-for="RoomofClass" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script>
+        function copyTextValue() {
+            var e = document.getElementById("select");
+            var val = e.options[e.selectedIndex].value;
+            document.getElementById("destination").value = val;
+        }
+    </script>
+    <script>
+        function showHideBuildingLabel() {
+            var status = document.getElementById("select");
+            if (status.value == "Online") {
+                document.getElementById("buildlabel").style.display = "none";
+            }
+            else {
+                document.getElementById("buildlabel").style.display = "block";
+            }
+        }
+    </script>
+    <script>
+        function showHideRoomLabel() {
+            var status = document.getElementById("select");
+            if (status.value == "Online") {
+                document.getElementById("roomlabel").style.display = "none";
+            }
+            else {
+                document.getElementById("roomlabel").style.display = "block";
+            }
+        }
+    </script>
+    <script>
+        function showHideBuildingTextBox() {
+            var status = document.getElementById("select");
+            if (status.value == "Online") {
+                document.getElementById("buildname").style.display = "none";
+                document.getElementById('buildname').value = '-';
+            }
+            else {
+                document.getElementById("buildname").style.display = "block";
+            }
+        }
+    </script>
+    <script>
+        function showHideRoomTextBox() {
+            var status = document.getElementById("select");
+            if (status.value == "Online") {
+                document.getElementById("roomname").style.display = "none";
+                document.getElementById('roomname').value = '-';
+            }
+            else {
+                document.getElementById("roomname").style.display = "block";
+            }
+        }
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

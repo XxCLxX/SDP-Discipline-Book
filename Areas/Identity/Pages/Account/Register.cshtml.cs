@@ -20,6 +20,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using System.Runtime.CompilerServices;
+using asp_book.Core.Repositories;
+using asp_book.Core.ViewModels;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace asp_book.Areas.Identity.Pages.Account
 {
@@ -31,6 +34,7 @@ namespace asp_book.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly IUnitOfWork _unitOfWork;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
@@ -166,6 +170,7 @@ namespace asp_book.Areas.Identity.Pages.Account
                         return LocalRedirect(returnUrl);
                     }
                 }
+
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
