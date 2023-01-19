@@ -2218,6 +2218,9 @@
           }
         }
       },
+      "summernote.editor/0.8.10": {
+        "type": "package"
+      },
       "System.AppContext/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -6740,6 +6743,74 @@
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
       ]
     },
+    "summernote.editor/0.8.10": {
+      "sha512": "GiKO9DLL4B/oNnRPdHctl9rkjkGKKr6QMQIlezaShkPlZV3u5EdkRXNCSKTJ7Apiq+E+HejPICNHUrWWy2NLnw==",
+      "type": "package",
+      "path": "summernote.editor/0.8.10",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/Content/summernote/font/summernote.eot",
+        "content/Content/summernote/font/summernote.ttf",
+        "content/Content/summernote/font/summernote.woff",
+        "content/Content/summernote/summernote-bs4.css",
+        "content/Content/summernote/summernote-lite.css",
+        "content/Content/summernote/summernote.css",
+        "content/Scripts/summernote/lang/summernote-ar-AR.js",
+        "content/Scripts/summernote/lang/summernote-bg-BG.js",
+        "content/Scripts/summernote/lang/summernote-ca-ES.js",
+        "content/Scripts/summernote/lang/summernote-cs-CZ.js",
+        "content/Scripts/summernote/lang/summernote-da-DK.js",
+        "content/Scripts/summernote/lang/summernote-de-DE.js",
+        "content/Scripts/summernote/lang/summernote-el-GR.js",
+        "content/Scripts/summernote/lang/summernote-es-ES.js",
+        "content/Scripts/summernote/lang/summernote-es-EU.js",
+        "content/Scripts/summernote/lang/summernote-fa-IR.js",
+        "content/Scripts/summernote/lang/summernote-fi-FI.js",
+        "content/Scripts/summernote/lang/summernote-fr-FR.js",
+        "content/Scripts/summernote/lang/summernote-gl-ES.js",
+        "content/Scripts/summernote/lang/summernote-he-IL.js",
+        "content/Scripts/summernote/lang/summernote-hr-HR.js",
+        "content/Scripts/summernote/lang/summernote-hu-HU.js",
+        "content/Scripts/summernote/lang/summernote-id-ID.js",
+        "content/Scripts/summernote/lang/summernote-it-IT.js",
+        "content/Scripts/summernote/lang/summernote-ja-JP.js",
+        "content/Scripts/summernote/lang/summernote-ko-KR.js",
+        "content/Scripts/summernote/lang/summernote-lt-LT.js",
+        "content/Scripts/summernote/lang/summernote-lt-LV.js",
+        "content/Scripts/summernote/lang/summernote-mn-MN.js",
+        "content/Scripts/summernote/lang/summernote-nb-NO.js",
+        "content/Scripts/summernote/lang/summernote-nl-NL.js",
+        "content/Scripts/summernote/lang/summernote-pl-PL.js",
+        "content/Scripts/summernote/lang/summernote-pt-BR.js",
+        "content/Scripts/summernote/lang/summernote-pt-PT.js",
+        "content/Scripts/summernote/lang/summernote-ro-RO.js",
+        "content/Scripts/summernote/lang/summernote-ru-RU.js",
+        "content/Scripts/summernote/lang/summernote-sk-SK.js",
+        "content/Scripts/summernote/lang/summernote-sl-SI.js",
+        "content/Scripts/summernote/lang/summernote-sr-RS-Latin.js",
+        "content/Scripts/summernote/lang/summernote-sr-RS.js",
+        "content/Scripts/summernote/lang/summernote-sv-SE.js",
+        "content/Scripts/summernote/lang/summernote-ta-IN.js",
+        "content/Scripts/summernote/lang/summernote-th-TH.js",
+        "content/Scripts/summernote/lang/summernote-tr-TR.js",
+        "content/Scripts/summernote/lang/summernote-uk-UA.js",
+        "content/Scripts/summernote/lang/summernote-vi-VN.js",
+        "content/Scripts/summernote/lang/summernote-zh-CN.js",
+        "content/Scripts/summernote/lang/summernote-zh-TW.js",
+        "content/Scripts/summernote/plugin/databasic/summernote-ext-databasic.css",
+        "content/Scripts/summernote/plugin/databasic/summernote-ext-databasic.js",
+        "content/Scripts/summernote/plugin/hello/summernote-ext-hello.js",
+        "content/Scripts/summernote/plugin/specialchars/summernote-ext-specialchars.js",
+        "content/Scripts/summernote/summernote-bs4.js",
+        "content/Scripts/summernote/summernote-bs4.min.js",
+        "content/Scripts/summernote/summernote-lite.js",
+        "content/Scripts/summernote/summernote.js",
+        "content/Scripts/summernote/summernote.min.js",
+        "summernote.editor.0.8.10.nupkg.sha512",
+        "summernote.editor.nuspec"
+      ]
+    },
     "System.AppContext/4.3.0": {
       "sha512": "fKC+rmaLfeIzUhagxY17Q9siv/sPrjjKcfNg1Ic8IlQkZLipo8ljcaZQu4VtI4Jqbzjc2VTjzGLF6WmsRXAEgA==",
       "type": "package",
@@ -10562,7 +10633,8 @@
       "Microsoft.AspNetCore.Identity.UI >= 6.0.10",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.12",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.12",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.11"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.11",
+      "summernote.editor >= 0.8.10"
     ]
   },
   "packageFolders": {
@@ -10629,6 +10701,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[6.0.11, )"
+          },
+          "summernote.editor": {
+            "target": "Package",
+            "version": "[0.8.10, )"
           }
         },
         "imports": [

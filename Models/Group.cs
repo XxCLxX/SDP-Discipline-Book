@@ -7,6 +7,7 @@ namespace asp_book.Models
     {
         public int GroupId { get; set; }
         public string GroupName { get; set; }
+        public int FacultyId { get; set; }
         public Faculty? Faculty { get; set; }
         public ICollection<GroupSubject>? GroupSubjects { get; set; }
         public ICollection<ApplicationUser>? Users { get; set; }

@@ -13,7 +13,8 @@
           "Microsoft.AspNetCore.Identity.UI": "6.0.10",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.12",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.12",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.11"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.11",
+          "summernote.editor": "0.8.10"
         },
         "runtime": {
           "asp-book.dll": {}
@@ -1583,6 +1584,7 @@
       "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
       "runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
       "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
+      "summernote.editor/0.8.10": {},
       "System.AppContext/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
@@ -3117,6 +3119,13 @@
       "sha512": "sha512-VB5cn/7OzUfzdnC8tqAIMQciVLiq2epm2NrAm1E9OjNRyG4lVhfR61SMcLizejzQP8R8Uf/0l5qOIbUEi+RdEg==",
       "path": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "hashPath": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512"
+    },
+    "summernote.editor/0.8.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GiKO9DLL4B/oNnRPdHctl9rkjkGKKr6QMQIlezaShkPlZV3u5EdkRXNCSKTJ7Apiq+E+HejPICNHUrWWy2NLnw==",
+      "path": "summernote.editor/0.8.10",
+      "hashPath": "summernote.editor.0.8.10.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",

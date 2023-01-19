@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CipQ7vmMPxEb+XQUsUnWA0bw78mr0mp4xxUlgi2RxsO1fJ8AgfV/D6kgW0GMAA6gsz2Fy+pKGwEB4wty8k5umw==",
+  "dgSpecHash": "nFrHoLFF84vfLiF+FK8T7CDIghjlcaygByq8Hr4smpoeG1pP308Zl6HjWk+jXuWcF/6BABtmd1wtVPD6YBMa/g==",
   "success": true,
   "projectFilePath": "C:\\Users\\Chikondi Luka\\Downloads\\New folder\\SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f\\asp-book.csproj",
   "expectedPackageFiles": [
@@ -107,6 +107,7 @@
     "C:\\Users\\Chikondi Luka\\.nuget\\packages\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Chikondi Luka\\.nuget\\packages\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Chikondi Luka\\.nuget\\packages\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
+    "C:\\Users\\Chikondi Luka\\.nuget\\packages\\summernote.editor\\0.8.10\\summernote.editor.0.8.10.nupkg.sha512",
     "C:\\Users\\Chikondi Luka\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\Chikondi Luka\\.nuget\\packages\\system.buffers\\4.3.0\\system.buffers.4.3.0.nupkg.sha512",
     "C:\\Users\\Chikondi Luka\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",

@@ -171,6 +171,38 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Chikondi Luka/Downloads/New folder/SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f/Pages/Groups/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JvdXBzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Chikondi Luka/Downloads/New folder/SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f/Pages/Groups/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JvdXBzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Chikondi Luka/Downloads/New folder/SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f/Pages/Groups/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JvdXBzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Chikondi Luka/Downloads/New folder/SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f/Pages/Groups/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JvdXBzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Chikondi Luka/Downloads/New folder/SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f/Pages/Groups/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JvdXBzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Chikondi Luka/Downloads/New folder/SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Chikondi Luka/Downloads/New folder/SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Chikondi Luka/Downloads/New folder/SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Chikondi Luka/Downloads/New folder/SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f/Views/Classes/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3Nlc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -229,26 +261,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Chikondi Luka/Downloads/New folder/SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f/Views/GroupSubjects/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JvdXBTdWJqZWN0c1xJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Chikondi Luka/Downloads/New folder/SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f/Views/Groups/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JvdXBzXENyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Chikondi Luka/Downloads/New folder/SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f/Views/Groups/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JvdXBzXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Chikondi Luka/Downloads/New folder/SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f/Views/Groups/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JvdXBzXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Chikondi Luka/Downloads/New folder/SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f/Views/Groups/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JvdXBzXEVkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Chikondi Luka/Downloads/New folder/SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f/Views/Groups/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JvdXBzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Chikondi Luka/Downloads/New folder/SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f/Views/Home/Index.cshtml]
