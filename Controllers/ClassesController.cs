@@ -25,6 +25,12 @@ namespace asp_book.Controllers
             return View(await _context.Classes.ToListAsync());
         }
 
+        // GET: Classes
+        public async Task<IActionResult> Index1()
+        {
+            return View(await _context.Classes.ToListAsync());
+        }
+
         // GET: Classes/Details/5
         public async Task<IActionResult> Details(int? id)
         {

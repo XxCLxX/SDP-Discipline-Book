@@ -278,3 +278,7 @@ C:\Users\Chikondi Luka\Downloads\New folder\SDP-Discipline-Book-4b238c473e3fac93
 C:\Users\Chikondi Luka\Downloads\New folder\SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
 C:\Users\Chikondi Luka\Downloads\New folder\SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f\bin\Debug\net6.0\System.Web.WebPages.dll
 C:\Users\Chikondi Luka\Downloads\New folder\SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
+C:\Users\Chikondi Luka\Downloads\New folder\SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f\bin\Debug\net6.0\data.json
+C:\Users\Chikondi Luka\Downloads\New folder\SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f\bin\Debug\net6.0\Antlr3.Runtime.dll
+C:\Users\Chikondi Luka\Downloads\New folder\SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f\bin\Debug\net6.0\System.Web.Optimization.dll
+C:\Users\Chikondi Luka\Downloads\New folder\SDP-Discipline-Book-4b238c473e3fac936017f11321eb2dc4f830027f\bin\Debug\net6.0\WebGrease.dll

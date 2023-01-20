@@ -14,37 +14,66 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="DayofClass" class="control-label"></label>
-                <input asp-for="DayofClass" class="form-control" />
+                <label asp-for="DayofClass" class="control-label">Day of Class</label>
+                <td>
+                    @Html.DropDownList("DayofClass", new List<SelectListItem>
+                    {
+                    new SelectListItem{ Text="-- Select Day --"},
+                    new SelectListItem{ Text="Monday", Value="Monday"},
+                    new SelectListItem{ Text="Tuesday", Value="Tuesday"},
+                    new SelectListItem{ Text="Wednesday", Value="Wednesday"},
+                    new SelectListItem{ Text="Thursday", Value="Thursday"},
+                    new SelectListItem{ Text="Friday", Value="Friday"},
+                    new SelectListItem{ Text="Saturday", Value="Saturday"}
+                    })
+                </td>
                 <span asp-validation-for="DayofClass" class="text-danger"></span>
             </div>
+            <br/>
             <div class="form-group">
-                <label asp-for="TimeofClass" class="control-label"></label>
-                <input asp-for="TimeofClass" class="form-control" />
+                <label asp-for="TimeofClass" class="control-label">Time of Class</label>
+                <td>
+                    @Html.DropDownList("TimeofClass", new List<SelectListItem>
+                    {
+                    new SelectListItem{ Text="-- Select Time Slot --"},
+                    new SelectListItem{ Text="08:45-10:20", Value="8:45-10:20"},
+                    new SelectListItem{ Text="10:35-12:10", Value="10:35-12:10"},
+                    new SelectListItem{ Text="12:25-14:00", Value="12:25-14:00"},
+                    new SelectListItem{ Text="14:45-16:20", Value="14:45-16:20"},
+                    new SelectListItem{ Text="16:35-18:10", Value="16:35-18:10"},
+                    new SelectListItem{ Text="18:25-20:00", Value="18:25-20:00"},
+                    new SelectListItem{ Text="20:15-21:50", Value="20:15-21:50"}
+                    })
+                </td>
                 <span asp-validation-for="TimeofClass" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="TypeofClass" class="control-label"></label>
                 <input asp-for="TypeofClass" class="form-control" id="destination" />
                 <span asp-validation-for="TypeofClass" class="text-danger"></span>
             </div>
+            <br />
             <div>
                 <select onchange="copyTextValue();showHideBuildingLabel();showHideRoomLabel();showHideBuildingTextBox();showHideRoomTextBox()" id="select">
-                    <option value="">Select</option>
+                    <option value="">-- Select Format--</option>
                     <option value="Online">Online</option>
                     <option value="Offline">Offline</option>
                 </select>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="BuildingofClass" class="control-label" id="buildlabel" style="display:none;"></label>
                 <input asp-for="BuildingofClass" class="form-control" id="buildname" style="display:none;" />
                 <span asp-validation-for="BuildingofClass" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="RoomofClass" class="control-label" id="roomlabel" style="display:none;"></label>
                 <input asp-for="RoomofClass" class="form-control" id="roomname" style="display:none;" />
                 <span asp-validation-for="RoomofClass" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

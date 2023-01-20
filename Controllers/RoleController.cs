@@ -24,9 +24,9 @@ namespace asp_book.Controllers
         }
 
         [Authorize(Policy = Constants.Policies.RequireTeacher)]
-        public IActionResult Teacher()
+        public async Task<IActionResult> Teacher()
         {
-            return View();
+            return View(await _context.Subjects.ToListAsync());
         }
 
         [Authorize(Policy = Constants.Policies.RequireAdmin)]

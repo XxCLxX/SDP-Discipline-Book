@@ -1,0 +1,93 @@
+@model EditEntryViewModel
+
+@functions{
+    public object getEventParameters()
+    {
+        var room = Context.Request.Query["room"].ToString();
+        var day = Context.Request.Query["day"].ToString();
+        var slot = int.Parse(Context.Request.Query["slot"].ToString());
+
+        return new
+        {
+            room,
+            slot,
+            day,
+        };
+    }
+
+    public bool checkIfEmptyEntry()
+    {
+        if (@Model.Teacher == "select teacher" || @Model.Group == "select group" || @Model.Lesson == "select class")
+            return true;
+
+        return false;
+
+    }
+}
+
+@using (Html.BeginForm("SaveEntry", "Planner", FormMethod.Post, new { id = "data" }))
+{
+    <table class="table">
+        <tr>
+            <th><label for="room">Room</label></th>
+            <th>
+                <input class="input-data" type="text" id="room" name="room" style="width:120px"
+                    value=@(Context.Request.Query["room"].ToString()) readonly>
+            </th>
+        </tr>
+        <tr>
+            <th><label for="slot">Slot</label></th>
+            <th>
+                <input class="input-data" type="text" id="slot" name="slot" style="width:120px"
+                    value=@(Context.Request.Query["slot"].ToString()) readonly>
+            </th>
+        </tr>
+        <tr>
+            <th><label for="day">Day</label></th>
+            <th>
+                <input class="input-data" type="text" id="day" name="day" style="width:120px"
+                    value=@(Context.Request.Query["day"].ToString()) readonly>
+            </th>
+        </tr>
+        <tr>
+            <th>Group</th>
+            <th>
+                @{
+                    @Html.DropDownList("Group", (SelectList)@Model.GroupItems, @Model.Group, new { style = "width:140px"})
+                }
+            </th>
+        </tr>
+        <tr>
+            <th>Teacher</th>
+            <th>
+                @{
+                    @Html.DropDownList("Teacher", (SelectList)@Model.TeacherItems, @Model.Teacher, new { style =
+                       "width:140px"})
+                }
+            </th>
+        </tr>
+        <tr>
+            <th>Class</th>
+            <th>
+                @{
+                    @Html.DropDownList("Lesson", (SelectList)@Model.LessonItems, @Model.Lesson, new { style = "width:140px"})
+                }
+            </th>
+        </tr>
+    </table>
+}
+
+<div>
+    <a href=@Url.Action("Index", new {room = @Context.Request.Query["room"].ToString()})>
+        <button method="post" class="button button3">Cancel</button>
+    </a>
+
+    @if (!checkIfEmptyEntry())
+    {
+        <a href=@Url.Action("UnassignEntry", "Planner", getEventParameters())>
+            <button method="post" class="button button5" name=Unassign>Unassign</button>
+        </a>
+    }
+
+    <input class="button button1" style="float:right" type="submit" value="Save" form="data">
+</div>

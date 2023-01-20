@@ -1,0 +1,53 @@
+﻿@model IEnumerable<asp_book.Models.Class>
+
+@{
+    ViewData["Title"] = "Index1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Class Schedule</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DayofClass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeofClass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeofClass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BuildingofClass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomofClass)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DayofClass)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeofClass)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeofClass)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BuildingofClass)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomofClass)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

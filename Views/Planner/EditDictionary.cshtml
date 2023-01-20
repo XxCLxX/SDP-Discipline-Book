@@ -1,0 +1,58 @@
+@model EditDictionaryViewModel
+
+@{
+    foreach (var item in Model.DictionaryItem)
+    {
+        <form id=@item method="post" action=@Url.Action("RemoveDictionaryItem", new {dictionary=@Model.DictionaryName,
+                                   item=@item})></form>
+    }
+}
+
+@{
+    foreach (var item in Model.DictionaryItem)
+    {
+        <form id="@item@item" name="edit" method="post" action=@Url.Action("EditDictionaryItem", new
+                                                  {dictionary=@Model.DictionaryName, item=@item})>
+                                                  </form>
+    }
+}
+
+@using (Html.BeginForm("SaveDictionary", "Planner", FormMethod.Post, new { id = "data" }))
+{
+    <label for="dictionaryName">Dictionary: </label>
+    <input class="input-data" type="text" style="font-weight: bold" id="dictionary" name="dictionary" style="width:120px"
+        value=@Model.DictionaryName readonly>
+    <table class="table">
+        @{
+            foreach (var item in Model.DictionaryItem)
+            {
+                <tr>
+                    <td style="width:60%">
+                        <label for="items"></label>
+                        <input class="input-data" type="text" id="items" name=items value=@item multiple form=@item readonly>
+                    </td>
+                    <td style="width:20%">
+                        <div>
+                            <button type="submit" form=@item class="button button3" style="width:80%">Remove</button>
+                        </div>
+                    </td>
+                    <td style="width:20%">
+                        <div>
+                            <button type="submit" form="@item@item" class="button button2" style="width:80%">Edit</button>
+                        </div>
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+}
+
+<div>
+    <a href=@Url.Action("Index")>
+        <button class="button button3" method="post" class="button">Cancel</button>
+    </a>
+    <a href=@Url.Action("EditDictionaryItem", new {dictionary=@Model.DictionaryName})>
+        <button class="button button2" method="post" class="button">Add</button>
+    </a>
+    <input class="button button1" style="float: right" type="submit" value="Save" form="data">
+</div>

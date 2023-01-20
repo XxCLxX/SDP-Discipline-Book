@@ -3,6 +3,8 @@
 #nullable disable
 
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace  asp_book.Areas.Identity.Pages.Account.Manage
