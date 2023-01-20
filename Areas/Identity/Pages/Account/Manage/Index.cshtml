@@ -20,11 +20,50 @@
                 <label asp-for="Input.PhoneNumber" class="form-label"></label>
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
+            <div class="form-floating">
+                <input asp-for="Input.BirthDate" class="form-control" />
+                <label asp-for="Input.BirthDate" class="form-label"></label>
+                <span asp-validation-for="Input.BirthDate" class="text-danger"></span>
+
+            </div>
+            <div class="form-floating">
+                <input class="form-control" id="destination" />
+                <label class="form-label">Faculty</label>
+            </div>
+            <div>
+                <select asp-for="SelectedFacultyId" asp-items="@Model.FacultyItems" onchange="copyTextValue()" id="select">
+                    <option>-- Select Faculty --</option>
+                </select>
+            </div>
+            <div class="form-floating">
+                <input class="form-control" id="groupdestination" />
+                <label class="form-label">Group</label>
+            </div>
+            <div>
+                <select asp-for="SelectedGroupId" asp-items="@Model.GroupItems" onchange="copyTextValueGroup()" id="groupselect">
+                    <option>-- Select Groups --</option>
+                </select>
+            </div>
             <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
         </form>
     </div>
 </div>
 
 @section Scripts {
+    <script>
+        function copyTextValue() {
+            var e = document.getElementById("select");
+            var val = e.options[e.selectedIndex].value;
+            document.getElementById("destination").value = val;
+        }
+    </script>
+    <script>
+        function copyTextValueGroup() {
+            var e = document.getElementById("groupselect");
+            var val = e.options[e.selectedIndex].value;
+            document.getElementById("groupdestination").value = val;
+        }
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
 }

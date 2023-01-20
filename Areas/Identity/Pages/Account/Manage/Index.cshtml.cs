@@ -10,6 +10,7 @@ using asp_book.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace asp_book.Areas.Identity.Pages.Account.Manage
 {
@@ -17,14 +18,26 @@ namespace asp_book.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-
+        private readonly ApplicationDbContext _context;
         public IndexModel(
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser> signInManager,
+            ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _context = context;
         }
+
+        [BindProperty]
+        public int SelectedFacultyId { set; get; }
+
+        public List<SelectListItem> FacultyItems { set; get; }
+
+        [BindProperty]
+        public int SelectedGroupId { set; get; }
+
+        public List<SelectListItem> GroupItems { set; get; }
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -59,18 +72,23 @@ namespace asp_book.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+            [Display(Name = "Date of Birth")]
+            public string BirthDate { get; set; }
         }
 
         private async Task LoadAsync(ApplicationUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            var birthDate = user.DOB;
 
             Username = userName;
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                BirthDate = birthDate
             };
         }
 
@@ -81,6 +99,22 @@ namespace asp_book.Areas.Identity.Pages.Account.Manage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
+
+            FacultyItems = _context.Faculties
+                                    .Select(a => new SelectListItem
+                                    {
+                                        Value = a.FacultyName.ToString(),
+                                        Text = a.FacultyName
+                                    })
+                                   .ToList();
+
+            GroupItems = _context.Groups
+                                    .Select(a => new SelectListItem
+                                    {
+                                        Value = a.GroupName.ToString(),
+                                        Text = a.GroupName
+                                    })
+                                   .ToList();
 
             await LoadAsync(user);
             return Page();
